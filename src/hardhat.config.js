@@ -3,12 +3,8 @@ Author: Jake Mathai
 Purpose: Hardhat config
 */
 
-require('@nomiclabs/hardhat-waffle')
-require('@nomiclabs/hardhat-ethers')
-require('@nomiclabs/hardhat-truffle5')
-require('@openzeppelin/hardhat-upgrades')
+require("@nomiclabs/hardhat-waffle");
 
-require('./tasks/uniswapOnChain')
 require('./tasks/archiver')
 
 process.env.WS_URL = 'wss://mainnet.infura.io/ws/v3/61bee94f08184b74ad949ff1e125a730'

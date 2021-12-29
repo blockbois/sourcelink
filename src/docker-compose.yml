@@ -1,11 +1,10 @@
 version: "3"
 services:
-  archiver:  # Uniswap on-chain data streaming container
+  archiver:
       restart: unless-stopped
       container_name: archiver
       build:
         context: .
-        dockerfile: ./conf/Dockerfile
+        dockerfile: Dockerfile
       command: ['node', 'dispatch.js']
-      environment:
-        - TASK=archiver
+
