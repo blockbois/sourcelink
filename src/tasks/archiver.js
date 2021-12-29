@@ -19,11 +19,11 @@ task('archiver', 'Decompiles newly deployed contracts').setAction(async() => {
             const bytecode = await provider.getCode(contractAddress)
             const evm = new EVM(bytecode)
             const sourceCode = evm.decompile()
-            console.log(`${contractAddress} decompiled`)
-            fs.writeFile(`../sourceCode/${contractAddress}.sol`, sourceCode, err => console.log(contractAddress, err))
+            console.log(`${contractAddress} decompiled:`, sourceCode)
+            fs.writeFile(`${contractAddress}.sol`, sourceCode)
         }
         catch(e) {
-            console.error(e)
+            // console.error(e)
         }
     }
 

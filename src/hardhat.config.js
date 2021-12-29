@@ -3,17 +3,20 @@ Author: Jake Mathai
 Purpose: Hardhat config
 */
 
-require("@nomiclabs/hardhat-waffle");
+require('@nomiclabs/hardhat-waffle')
+require('@nomiclabs/hardhat-ethers')
+require('@nomiclabs/hardhat-truffle5')
+require('@openzeppelin/hardhat-upgrades')
 
 require('./tasks/archiver')
 
-process.env.WS_URL = 'wss://mainnet.infura.io/ws/v3/61bee94f08184b74ad949ff1e125a730'
+process.env.WS_URL = 'wss://eth-mainnet.alchemyapi.io/v2/gCR-2pt8Rah5nvVlSIC1DHJobAeFgJy1'
 
 module.exports = {
   'solidity': '0.8.4',
   'networks': {
     'mainnet': {
-      'url': 'https://mainnet.infura.io/v3/61bee94f08184b74ad949ff1e125a730',
+      'url': 'https://eth-mainnet.alchemyapi.io/v2/gCR-2pt8Rah5nvVlSIC1DHJobAeFgJy1',
       'chainId': 1,
     }
   },
