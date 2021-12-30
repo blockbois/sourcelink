@@ -1,0 +1,11 @@
+version: "3"
+services:
+  archive:
+    restart: unless-stopped
+    container_name: archive
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ['node', 'dispatch.js', 'archive']
+    environment:
+      - HARDHAT_NETWORK=mainnet

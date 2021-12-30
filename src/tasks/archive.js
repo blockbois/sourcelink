@@ -8,7 +8,7 @@ const { EVM } = require('evm');
 
 const time = require('../utils/time')
 
-task('archiver', 'Decompiles newly deployed contracts').setAction(async() => {
+task('archive', 'Decompiles newly deployed contracts').setAction(async() => {
 
     const inspectTransaction = async(provider, transaction) => {
         try {

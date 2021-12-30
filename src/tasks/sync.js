@@ -20,7 +20,7 @@ task('sync', 'Decompile all contracts since genesis').setAction(async() => {
             const evm = new EVM(bytecode)
             const sourceCode = evm.decompile()
             console.log(`${contractAddress} decompiled:`, sourceCode)
-            fs.writeFile(`${contractAddress}.sol`, sourceCode)
+            // fs.writeFile(`${contractAddress}.sol`, sourceCode)
         }
         catch(e) {}
     }

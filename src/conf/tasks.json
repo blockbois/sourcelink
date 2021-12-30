@@ -1,7 +1,7 @@
 {
-    "archiver": {
-        "module": "tasks/archiver",
-        "function": "archiver",
+    "archive": {
+        "module": "tasks/archive",
+        "function": "archive",
         "onChain": "true"
     },
     "sync": {
