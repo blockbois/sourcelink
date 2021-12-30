@@ -9,16 +9,15 @@ services:
     command: ['node', 'dispatch.js']
     environment:
       - TASK=archiver
-      - HARDHAT_NETWORK=rinkeby
-      
-  # sync:
-  #   restart: unless-stopped
-  #   container_name: archiver
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   command: ['node', 'dispatch.js']
-  #   environment:
-  #     - TASK=sync
-  #     - HARDHAT_NETWORK=mainnet
+      - HARDHAT_NETWORK=mainnet
+  sync:
+    restart: unless-stopped
+    container_name: archiver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ['node', 'dispatch.js']
+    environment:
+      - TASK=sync
+      - HARDHAT_NETWORK=mainnet
 
