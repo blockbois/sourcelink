@@ -1,6 +1,6 @@
 /*
 Author: Jake Mathai
-Purpose: Listen for new contract deployments and attempt to decode bytecode into opcodes
+Purpose: Decompile all historical blocks
 */
 
 const fs = require('fs')
@@ -8,7 +8,7 @@ const { EVM } = require('evm');
 
 const time = require('../utils/time')
 
-task('archiver', 'Decompiles newly deployed contracts').setAction(async() => {
+task('sync', 'Decompile all contracts since genesis').setAction(async() => {
 
     const inspectTransaction = async(provider, transaction) => {
         try {
@@ -26,27 +26,29 @@ task('archiver', 'Decompiles newly deployed contracts').setAction(async() => {
     }
 
     let provider = null
-
-    const listen = async() => {
+    const initializeProvider = async() => {
         provider = new ethers.providers.WebSocketProvider(process.env.WS_URL, process.env.NETWORK)
-        provider.on('block', async blockNumber => {
-            console.log('New block:', blockNumber)
-            const block = await provider.getBlockWithTransactions(blockNumber)
-            for (const transaction of block.transactions)
-                inspectTransaction(provider, transaction)
-        })
         provider.on('error', async error => {
             console.log('Provider error:', error)
             provider = null
         })
-        console.log('Provider initialized')
     }
-
-    await listen()
-    while (true) {
-        await time.sleep(60)
-        if (provider == null)
-            await listen()
+    await initializeProvider()
+    let latestBlock = await provider.getBlockNumber()
+    for (let currentBlock = 1; currentBlock <= latestBlock; ++currentBlock) {
+        console.log('On block', currentBlock)
+        if (provider == null) {
+            await initializeProvider()
+            latestBlock = await provider.getBlockNumber()
+        }
+        try {
+            const block = await provider.getBlockWithTransactions(currentBlock)
+            for (const transaction of block.transactions)
+                inspectTransaction(provider, transaction)
+        }
+        catch(e) {
+            console.log(e)
+        }
     }
 })
 

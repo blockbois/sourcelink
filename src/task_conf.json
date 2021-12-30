@@ -1,0 +1,12 @@
+{
+    "archiver": {
+        "module": "tasks/archiver",
+        "function": "archiver",
+        "onChain": "true"
+    },
+    "sync": {
+        "module": "tasks/sync",
+        "function": "sync",
+        "onChain": "true"
+    }
+}
