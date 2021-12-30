@@ -6,7 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ['node', 'dispatch.js']
+    command: ['node', 'dispatch.js', 'sync']
     environment:
-      - TASK=sync
       - HARDHAT_NETWORK=mainnet

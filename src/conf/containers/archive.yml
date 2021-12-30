@@ -1,12 +1,11 @@
 version: "3"
 services:
-  archiver:
+  archive:
     restart: unless-stopped
-    container_name: archiver
+    container_name: archive
     build:
       context: .
       dockerfile: Dockerfile
-    command: ['node', 'dispatch.js']
+    command: ['node', 'dispatch.js', 'archive']
     environment:
-      - TASK=archiver
       - HARDHAT_NETWORK=mainnet

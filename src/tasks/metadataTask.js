@@ -19,5 +19,5 @@ let generateMetadata = (sourceCodePath) => {
 }
 
 module.exports = {
-    generateMetadata
+    "generateMetadata" : generateMetadata
 }
