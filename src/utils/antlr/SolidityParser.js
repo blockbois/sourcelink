@@ -1,7 +1,7 @@
 // Generated from Solidity.g4 by ANTLR 4.9
 // jshint ignore: start
-import antlr4 from 'antlr4';
-import SolidityListener from './SolidityListener.js';
+const antlr4 = require("antlr4")
+const {SolidityListener} = require("./SolidityListener.js")
 
 const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
     "\u5964\u0003|\u03cf\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
@@ -659,7 +659,7 @@ const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DF
 
 const sharedContextCache = new antlr4.PredictionContextCache();
 
-export default class SolidityParser extends antlr4.Parser {
+class SolidityParser extends antlr4.Parser {
 
     static grammarFileName = "Solidity.g4";
     static literalNames = [ null, "'pragma'", "';'", "'^'", "'~'", "'>='", 
@@ -9208,3 +9208,5 @@ SolidityParser.TupleExpressionContext = TupleExpressionContext;
 SolidityParser.TypeNameExpressionContext = TypeNameExpressionContext; 
 SolidityParser.NumberLiteralContext = NumberLiteralContext; 
 SolidityParser.IdentifierContext = IdentifierContext; 
+
+module.exports = { SolidityParser }

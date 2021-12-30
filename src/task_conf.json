@@ -8,5 +8,10 @@
         "module": "tasks/sync",
         "function": "sync",
         "onChain": "true"
+    },
+    "metadata": {
+        "module": "tasks/metadataTask",
+        "function": "generateMetadata",
+        "onChain": "false"
     }
 }

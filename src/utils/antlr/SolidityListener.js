@@ -1,9 +1,11 @@
 // Generated from Solidity.g4 by ANTLR 4.9
 // jshint ignore: start
-import antlr4 from 'antlr4';
+const antlr4 = require("antlr4")
 
 // This class defines a complete listener for a parse tree produced by SolidityParser.
-export default class SolidityListener extends antlr4.tree.ParseTreeListener {
+class SolidityListener extends antlr4.tree.ParseTreeListener {
+
+	metadata = {}
 
 	// Enter a parse tree produced by SolidityParser#sourceUnit.
 	enterSourceUnit(ctx) {
@@ -13,7 +15,6 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 	exitSourceUnit(ctx) {
 	}
 
-
 	// Enter a parse tree produced by SolidityParser#pragmaDirective.
 	enterPragmaDirective(ctx) {
 	}
@@ -21,7 +22,6 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 	// Exit a parse tree produced by SolidityParser#pragmaDirective.
 	exitPragmaDirective(ctx) {
 	}
-
 
 	// Enter a parse tree produced by SolidityParser#pragmaName.
 	enterPragmaName(ctx) {
@@ -31,7 +31,6 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 	exitPragmaName(ctx) {
 	}
 
-
 	// Enter a parse tree produced by SolidityParser#pragmaValue.
 	enterPragmaValue(ctx) {
 	}
@@ -40,15 +39,15 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 	exitPragmaValue(ctx) {
 	}
 
-
 	// Enter a parse tree produced by SolidityParser#version.
 	enterVersion(ctx) {
+		// console.log(JSON.stringify(ctx))
+		// console.log(ctx)
 	}
 
 	// Exit a parse tree produced by SolidityParser#version.
 	exitVersion(ctx) {
 	}
-
 
 	// Enter a parse tree produced by SolidityParser#versionOperator.
 	enterVersionOperator(ctx) {
@@ -58,15 +57,14 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 	exitVersionOperator(ctx) {
 	}
 
-
 	// Enter a parse tree produced by SolidityParser#versionConstraint.
 	enterVersionConstraint(ctx) {
+		console.log(ctx.children[1])
 	}
 
 	// Exit a parse tree produced by SolidityParser#versionConstraint.
 	exitVersionConstraint(ctx) {
 	}
-
 
 	// Enter a parse tree produced by SolidityParser#importDeclaration.
 	enterImportDeclaration(ctx) {
@@ -178,6 +176,7 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 
 	// Enter a parse tree produced by SolidityParser#functionDefinition.
 	enterFunctionDefinition(ctx) {
+		this.metadata["function"] = (this.metadata["function"] || 0) + 1
 	}
 
 	// Exit a parse tree produced by SolidityParser#functionDefinition.
@@ -246,7 +245,6 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 	// Exit a parse tree produced by SolidityParser#parameter.
 	exitParameter(ctx) {
 	}
-
 
 	// Enter a parse tree produced by SolidityParser#eventParameterList.
 	enterEventParameterList(ctx) {
@@ -772,3 +770,5 @@ export default class SolidityListener extends antlr4.tree.ParseTreeListener {
 
 
 }
+
+module.exports = {SolidityListener}
